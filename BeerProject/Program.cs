@@ -24,7 +24,8 @@ namespace BeerProject
                 Console.WriteLine(b.ToString());
             }
 
-            Console.WriteLine("Sorted by Mix: ");
+            Console.WriteLine("");
+            Console.WriteLine("Sorted by Units: ");
             beers.Sort(new SortingBeerBy(SortBy.UNIT));
             foreach (Beer b in beers)
             {
