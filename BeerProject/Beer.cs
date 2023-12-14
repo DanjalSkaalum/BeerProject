@@ -20,7 +20,7 @@ namespace BeerProject
         double _Percent;
 
         string Brewery { get { return _Brewery; } set { _Brewery = value; } }
-        string BeerName { get { return _Brewery; } set { _Brewery = value; } }
+        string BeerName { get { return _BeerName; } set { _BeerName = value; } }
         public BeerType BeerType { get; set; }
         public int Volume { get { return _Volume; } set { _Volume = value; } }
         public double Percent {  get { return _Percent; } set { _Percent = value; } }
@@ -47,7 +47,7 @@ namespace BeerProject
         }
         public override string ToString()
         {
-            return $"Brewery: {Brewery}\nBeer: {BeerName}\nType: {BeerType}\nVolume of beer: {Volume}\nPercent of Alcohol: {Percent}";
+            return $"Brewery: {Brewery}\nBeer: {BeerName}\nType: {BeerType}\nVolume of beer: {Volume}\nPercent of Alcohol: {Percent}\nUnit of Beer: {Unit}";
         }
             void Add(Beer otherBeer)
             {
@@ -58,14 +58,14 @@ namespace BeerProject
             int combinedVolume = Volume + otherBeer.Volume;
             double combinedPercent = (Volume * Percent + otherBeer.Volume * otherBeer.Percent) / (Volume + otherBeer.Volume);
             double combinedUnit = ((combinedVolume * combinedPercent) / 150);
-            return new Beer($"{Brewery} + {otherBeer.Brewery}", $"{BeerName} + {otherBeer.BeerName}", BeerType.MIX, combinedVolume, combinedPercent, combinedUnit);
+            return new Beer($"{Brewery} {otherBeer.Brewery}", $"{BeerName} {otherBeer.BeerName}", BeerType.MIX, combinedVolume, combinedPercent, combinedUnit);
             }
-            public Beer Mix(Beer firstBeer, Beer otherBeer)
+            public static Beer Mix(Beer firstBeer, Beer otherBeer)
             {
             int combinedVolume = firstBeer.Volume + otherBeer.Volume;
             double combinedPercent = (firstBeer.Volume * firstBeer.Percent + otherBeer.Volume * otherBeer.Percent) / (firstBeer.Volume + otherBeer.Volume);
             double combinedUnit = ((combinedVolume * combinedPercent) / 150);
-            return new Beer($"{firstBeer.Brewery} + {otherBeer.Brewery}", $"{firstBeer.BeerName} + {otherBeer.BeerName}", BeerType.MIX, combinedVolume, combinedPercent, combinedUnit);
+            return new Beer($"{firstBeer.Brewery} {otherBeer.Brewery}", $"{firstBeer.BeerName} {otherBeer.BeerName}", BeerType.MIX, combinedVolume, combinedPercent, combinedUnit);
             }
 
         public int CompareTo(Beer? obj)
